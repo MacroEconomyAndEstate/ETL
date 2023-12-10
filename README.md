@@ -14,9 +14,11 @@ DW & BI 구축을 통한 거시 경제 흐름과 부동산 시장 간 패턴 파
 
 # 프로젝트 상세
 ### 아키텍처
-![Untitled.png](..%2F..%2FDownloads%2FUntitled.png)
+![Untitled](https://github.com/MacroEconomyAndEstate/ETL/assets/39490214/9cdcb4f9-db95-43b1-8d59-75fbbb403a8d)
+
 ### ERD
-![estate-erd.png](..%2F..%2FDownloads%2Festate-erd.png)
+![estate-erd](https://github.com/MacroEconomyAndEstate/ETL/assets/39490214/85cb3410-9552-4aab-a8cf-8a7ba5039626)
+
 ### 사용한 데이터
 - 부동산 지표
   [KB부동산 데이터허브](https://data.kbland.kr/)
@@ -46,6 +48,7 @@ DW & BI 구축을 통한 거시 경제 흐름과 부동산 시장 간 패턴 파
     - AWS 프리티어가 제공하는 EC2 사양은 RAM 1GB로 Superset을 띄우기에 부족했습니다.
     - Superset을 SaaS 형태로 제공하는 Preset을 사용해 해결했습니다.
 ### 보완할 점
+
 - Preset에서 FK가 있는 데이터셋이 불러와지지 않는 문제가 있었습니다.
     - 정확한 원인 파악이 어려워 FK를 임의로 제거하고 데이터셋을 생성했습니다.
 - 크롤링 자동화 및 S3 업로드 자동화, AUTO COPY가 필요합니다.
