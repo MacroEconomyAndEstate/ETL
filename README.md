@@ -17,7 +17,8 @@ DW & BI 구축을 통한 거시 경제 흐름과 부동산 시장 간 패턴 파
 ![Untitled](https://github.com/MacroEconomyAndEstate/ETL/assets/39490214/9cdcb4f9-db95-43b1-8d59-75fbbb403a8d)
 
 ### ERD
-![estate-erd.png](..%2F..%2FDownloads%2Festate-erd.png)
+![estate-erd](https://github.com/MacroEconomyAndEstate/ETL/assets/39490214/85cb3410-9552-4aab-a8cf-8a7ba5039626)
+
 ### 사용한 데이터
 - 부동산 지표
   [KB부동산 데이터허브](https://data.kbland.kr/)
