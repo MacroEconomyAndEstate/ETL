@@ -14,7 +14,8 @@ DW & BI 구축을 통한 거시 경제 흐름과 부동산 시장 간 패턴 파
 
 # 프로젝트 상세
 ### 아키텍처
-![Untitled.png](..%2F..%2FDownloads%2FUntitled.png)
+![Untitled](https://github.com/MacroEconomyAndEstate/ETL/assets/39490214/9cdcb4f9-db95-43b1-8d59-75fbbb403a8d)
+
 ### ERD
 ![estate-erd.png](..%2F..%2FDownloads%2Festate-erd.png)
 ### 사용한 데이터
