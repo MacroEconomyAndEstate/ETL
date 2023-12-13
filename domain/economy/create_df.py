@@ -1,5 +1,5 @@
 import pandas as pd
-from ecos import Ecos
+from .ecos import Ecos
 api = Ecos("")  # service_key
 
 
@@ -9,20 +9,20 @@ class EconomyDfCreator:
 
 
     def convert_to_datetime(self, df, cycle):
-        year, format_str = df.str[:4], "{}-{}"
+        year = df.str[:4]
         if cycle == 'Q':
             quarter_to_month = {'Q1': '03-01', 'Q2': '06-01', 'Q3': '09-01', 'Q4': '12-01'}
-            return pd.to_datetime(format_str.format(year, df.str[4:].map(quarter_to_month)), format='%Y-%m-%d')
+            return pd.to_datetime(year+ '-' + df.str[4:].map(quarter_to_month), format='%Y-%m-%d')
         elif cycle == 'M':
-            return pd.to_datetime(format_str.format(year, df.str[4:]+'-01'), format='%Y-%m-%d')
+            return pd.to_datetime(year + '-' + df.str[4:] + '-01', format='%Y-%m-%d')
         elif cycle == 'D':
-            return pd.to_datetime(format_str.format(year, df.str[4:6] + '-' + df.str[6:]), format='%Y-%m-%d')
+            return pd.to_datetime(year + '-' + df.str[4:6] + '-' + df.str[6:], format='%Y-%m-%d')
         elif cycle == 'A':
-            return pd.to_datetime(format_str.format(year, '12-01'), format='%Y-%m-%d')
+            return pd.to_datetime(year + '-12-01', format='%Y-%m-%d')
     
 
-    def return_final_df(self, var_name, code, start, cycle, end, code1, code2=None):
-        df = api.get_statistic_search(cycle, code, start, end, code1, code2, translate=False)
+    def return_final_df(self, var_name, code, cycle, start, end, code1, code2=None):
+        df = api.get_statistic_search(통계표코드=code, 주기=cycle, 검색시작일자=start, 검색종료일자=end, 통계항목코드1=code1, 통계항목코드2=code2, translate=False)
         df['TIME'] = self.convert_to_datetime(df['TIME'], cycle)
         df.rename(columns={"DATA_VALUE":var_name}, inplace=True)
         df = pd.DataFrame(df, columns=["TIME", var_name])
