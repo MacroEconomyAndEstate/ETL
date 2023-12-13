@@ -69,7 +69,7 @@ class EconomyDfCreator:
         return pd.concat([household_credit, demand_deposit_turnover_rate, saving_deposit_turnover_rate, standard_interest_rate, usa_interest_rate, saving_interest_rate_new, saving_interest_rate_balance, fixed_loan_interest_rate_new, variable_loan_interest_rate_new, lease_loan_interest_rate_new, fixed_loan_interest_rate_balance, variable_loan_interest_rate_balance, lease_loan_interest_rate_balance, loan_demand], axis=1)
 
     
-    def create_income_expense_csv(self):
+    def create_income_expense(self):
         nominal_GNI = self.return_final_df("nominal_GNI", "200Y002", "Q", "1961Q1", "2023Q3", "20111")
         real_GNI = self.return_final_df("real_GNI", "200Y002", "Q", "1961Q1", "2023Q3", "20112")
         
