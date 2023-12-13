@@ -2,6 +2,7 @@ import requests
 import xml.etree.ElementTree as ET
 from datetime import datetime
 import pandas as pd
+from config import SERVICE_KEY
 
 class ApartmentDataCollector:
     def __init__(self):
@@ -11,7 +12,7 @@ class ApartmentDataCollector:
     def collect_apt_data(self, LAWD_CD, DEAL_YMD):
         url = 'http://openapi.molit.go.kr:8081/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcAptTrade'
         params = {
-            'serviceKey': 'mgI42XcdeI7vPE6g9DoA1A/FJNqS3I5veW1ywg2rGd0R/7PzzTXPyvtKAO6gIKdLavcz9RHt2va2VkG0mmfYRg==',
+            'serviceKey': SERVICE_KEY,
             'LAWD_CD': LAWD_CD,
             'DEAL_YMD': DEAL_YMD
         }
