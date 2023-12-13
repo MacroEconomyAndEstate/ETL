@@ -52,12 +52,12 @@ if __name__ == '__main__':
 
     df = edc.create_bank_finance()
     df.to_csv(csv_buffer, index=False)
-    s3_uploader.put_object("economy.csv", csv_buffer)
+    s3_uploader.put_object("bank_finance.csv", csv_buffer)
     csv_buffer.seek(0)
     csv_buffer.truncate(0)
 
     df = edc.create_income_expense()
     df.to_csv(csv_buffer, index=False)
-    s3_uploader.put_object("economy.csv", csv_buffer)
+    s3_uploader.put_object("income_expense.csv", csv_buffer)
     csv_buffer.seek(0)
     csv_buffer.truncate(0)
