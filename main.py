@@ -1,3 +1,5 @@
+
+from domain.apartment.apartment_sales_price import ApartmentDataCollector
 from domain.real_estate.real_estate_data_processor import RealEstateDataProcessor
 from domain.economy.create_df import EconomyDfCreator
 from s3.s3_uploader import S3Uploader
@@ -6,7 +8,7 @@ from dotenv import load_dotenv
 import os
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     env_path = os.path.join(os.path.dirname(__file__), 'resources', 'secret.env')
     load_dotenv(env_path)
 
@@ -61,3 +63,6 @@ if __name__ == '__main__':
     s3_uploader.put_object("income_expense.csv", csv_buffer)
     csv_buffer.seek(0)
     csv_buffer.truncate(0)
+    
+    collector = ApartmentDataCollector()
+    collector.collect_data_for_all_regions(2006, 2023, 1, 12)
