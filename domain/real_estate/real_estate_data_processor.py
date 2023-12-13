@@ -2,6 +2,7 @@ from PublicDataReader import Kbland
 import pandas as pd
 from pandas import DataFrame
 
+
 class RealEstateDataProcessor:
     def __init__(self):
         self.api = Kbland()

@@ -1,5 +1,3 @@
-import requests
-import pandas as pd
 from domain.real_estate.real_estate_data_processor import RealEstateDataProcessor
 from s3.s3_uploader import S3Uploader
 from io import StringIO
