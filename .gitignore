@@ -1,3 +1,4 @@
 .idea
 domain/apartment/config.py
 venv
+resources/secret.env
