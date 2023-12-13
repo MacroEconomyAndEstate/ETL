@@ -100,7 +100,3 @@ class ApartmentDataCollector:
         all_data['region_name'] = all_data['region_name'].str.replace(r'\s+', ' ', regex=True)
 
         all_data.to_csv("apartment_sales_price.csv", index=False, encoding='utf-8-sig')
-
-if __name__ == "__main__":
-    collector = ApartmentDataCollector()
-    collector.collect_data_for_all_regions(2006, 2023, 1, 12)
