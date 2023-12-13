@@ -245,3 +245,47 @@ car_file = '차량등록인구.csv'
 
 population_processor = PopulationDataProcessor(move_file, job_file, life_file, car_file)
 population_processor.save_combined_data()
+
+
+class InsertRegionCode:
+    def __init__(self, file_path):
+        self.df = pd.read_csv(file_path)
+        self.region_codes = {
+            '전국': '0000000000',
+            '서울특별시': '1100000000',
+            '경상남도': '4800000000',
+            '경상북도': '4700000000',
+            '전라남도': '4600000000',
+            '전라북도': '4500000000',
+            '충청남도': '4400000000',
+            '충청북도': '4300000000',
+            '강원특별자치도': '5100000000',
+            '경기도': '4100000000',
+            '세종특별자치시': '3611000000',
+            '울산광역시': '3100000000',
+            '대전광역시': '3000000000',
+            '광주광역시': '2900000000',
+            '인천광역시': '2800000000',
+            '대구광역시': '2700000000',
+            '부산광역시': '2600000000',
+            '제주특별자치도': '5000000000'
+        }
+
+    def process_data(self):
+        self.df['area_code'] = self.df['region'].map(self.region_codes)
+        self.df['area_code'] = self.df['area_code'].astype(str).str.zfill(10)
+        self.df = pd.concat([self.df.iloc[:, :2], self.df['area_code'], self.df.iloc[:, 2:-1]], axis=1)
+
+    def save_to_csv(self, output_path='final_population.csv'):
+        self.df.to_csv(output_path, index=False)
+
+    def display_info(self):
+        print(self.df.info())
+        print(self.df.columns)
+
+
+# 사용 예시
+data_processor = InsertRegionCode('population.CSV')
+data_processor.process_data()
+data_processor.display_info()
+data_processor.save_to_csv()
