@@ -1,6 +1,6 @@
+import os
 import pandas as pd
-from ecos import Ecos
-api = Ecos("")  # service_key
+from PublicDataReader import Ecos
 
 
 class EconomyDfCreator:
@@ -22,7 +22,7 @@ class EconomyDfCreator:
     
 
     def return_final_df(self, var_name, code, cycle, start, end, code1, code2=None):
-        df = api.get_statistic_search(통계표코드=code, 주기=cycle, 검색시작일자=start, 검색종료일자=end, 통계항목코드1=code1, 통계항목코드2=code2, translate=False)
+        df = Ecos(os.getenv('ECOS_SERVICE_KEY')).get_statistic_search(통계표코드=code, 주기=cycle, 검색시작일자=start, 검색종료일자=end, 통계항목코드1=code1, 통계항목코드2=code2, translate=False)
         df['TIME'] = self.convert_to_datetime(df['TIME'], cycle)
         df.rename(columns={"DATA_VALUE":var_name}, inplace=True)
         df = pd.DataFrame(df, columns=["TIME", var_name])
