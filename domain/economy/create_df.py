@@ -1,5 +1,5 @@
 import pandas as pd
-from .ecos import Ecos
+from ecos import Ecos
 api = Ecos("")  # service_key
 
 
